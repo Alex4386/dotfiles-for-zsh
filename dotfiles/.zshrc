@@ -104,14 +104,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [[ ! -f ~/.path-setup.zsh ]] || source ~/.path-setup.zsh
-[[ ! -f ~/.setup-gpg.zsh ]] || source ~/.setup-gpg.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ $- == *i* ]]; then
+  [[ ! -f ~/.setup-gpg.zsh ]] || source ~/.setup-gpg.zsh
 
-if [[ "x${TERM_PROGRAM}" = "xvscode" ]]; then 
-    # Skip Homebrew updates on Visual Studio Code
-else
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+  if [[ ! "x${TERM_PROGRAM}" = "xvscode" ]] then;
     [[ ! -f ~/.update-homebrew.zsh ]] || ~/.update-homebrew.zsh
+  fi
 fi
-
